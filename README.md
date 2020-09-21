@@ -4,6 +4,10 @@
 
 This is a challenge in which I have to use node js, graphql, apollo server, JWT, typeOrm and postgreSQL.
 
+# URL
+
+https://pacific-sea-20108.herokuapp.com/
+
 ### Installation
 
 - clone repo
