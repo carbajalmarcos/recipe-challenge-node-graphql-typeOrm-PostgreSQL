@@ -2,7 +2,7 @@ import { User } from '../../entity/User';
 import { getRepository, getManager } from "typeorm";
 import * as bcrypt from "bcryptjs";
 import { AuthenticationError } from "apollo-server";
-import { getToken } from "../../utils/authUtils";
+import { getToken, validateEmail } from "../../utils/authUtils";
 
 export default {
   Mutation: {
@@ -11,8 +11,9 @@ export default {
       { input }: { input: { name: string; email: string; password: string } }
     ) => {
       try {
+        if (!validateEmail(input.email))throw new AuthenticationError('invalid email !');
         const userRepository = getRepository(User);
-
+        
         const user = await userRepository.findOne({
           where: { email: input.email },
         });

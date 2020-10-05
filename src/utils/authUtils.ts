@@ -17,4 +17,13 @@ export const getToken = (id: number) =>
     process.env.JWT_AUTH_SECRET,
     { expiresIn: "1d" }
   );
-  
+export const validateEmail = (mail: string) => {
+  if (
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      mail
+    )
+  ) {
+    return true;
+  }
+  return false;
+};  
